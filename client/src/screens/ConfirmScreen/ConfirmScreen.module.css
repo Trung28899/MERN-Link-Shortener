@@ -1,0 +1,27 @@
+.confirmScreenStyle {
+  position: relative;
+  margin: 30vh auto;
+  text-align: center;
+  z-index: 50;
+}
+
+.confirmScreenStyle h3 {
+  color: #5cb85c;
+  font-weight: 800;
+  font-size: 1.25rem;
+}
+
+.confirmScreenStyle p:nth-child(2) {
+  color: #5cb85c;
+  font-weight: 800;
+}
+
+.confirmScreenStyle p:nth-child(3) {
+  color: #5bc0de;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.buttonStyle {
+  background-color: black !important;
+}

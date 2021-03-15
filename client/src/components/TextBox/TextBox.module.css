@@ -1,0 +1,53 @@
+.inputStyle {
+  position: relative;
+  width: 100%;
+  border: none;
+  border-radius: 4px;
+  outline: none;
+  box-sizing: border-box;
+  transition: 0.3s;
+  font-weight: 800;
+  font-size: 0.95rem;
+}
+
+.textBoxContainer {
+  position: relative;
+  display: flex;
+  width: 16vw;
+  height: 48px;
+  left: 42vw;
+  background-color: white;
+  border: 2px solid #aaa;
+  border-radius: 4px;
+  outline: none;
+  padding: 1px 10px;
+  box-sizing: border-box;
+  transition: 0.3s;
+  font-weight: 800;
+}
+
+.textBoxContainer:hover {
+  border-color: dodgerBlue;
+  box-shadow: 0 0 12px 0 dodgerBlue;
+}
+
+@media screen and (min-width: 1800px) {
+  .textBoxContainer {
+    width: 8vw;
+    left: 46vw;
+  }
+}
+
+@media screen and (max-width: 900px) {
+  .textBoxContainer {
+    width: 30vw;
+    left: 35vw;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .textBoxContainer {
+    width: 60vw;
+    left: 20vw;
+  }
+}

@@ -1,0 +1,25 @@
+.homeScreenStyle {
+  position: relative;
+  margin: 30vh auto;
+  text-align: center;
+  z-index: 50;
+}
+
+.homeScreenStyle h3 {
+  color: rgb(240, 238, 238);
+}
+
+.buttonStyle {
+  margin-top: 0vh !important;
+}
+
+.errorStyle {
+  display: block;
+  color: rgb(206, 102, 102);
+  margin-top: 0vh;
+  margin-bottom: 1.2vh;
+}
+
+.errorStyleHide {
+  display: none;
+}
