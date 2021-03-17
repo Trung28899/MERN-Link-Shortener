@@ -1,0 +1,88 @@
+.LinkBox {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  background-color: #e5daf0;
+  border: 0.735088px solid #e5daf0;
+  margin: 20px auto;
+  height: 60px;
+  border-radius: 7px;
+  cursor: pointer;
+  padding: 10px;
+  opacity: 0.85;
+  width: 20vw;
+
+  -moz-box-shadow: 3px 3px 3px #ccc;
+  -webkit-box-shadow: 3px 3px 3px #ccc;
+  box-shadow: 3px 3px 3px #ccc;
+}
+
+.LinkBox:hover > .p {
+  font-weight: 800;
+  font-size: 24.6421px;
+  margin: 0 0 5px;
+}
+
+.LinkBoxPreview {
+  position: relative;
+}
+
+.pPreview {
+  position: relative;
+}
+
+.socialIconWrapper {
+  flex: 1;
+}
+
+.content {
+  position: relative;
+  font-size: 1rem;
+  flex: 2;
+  margin: auto auto;
+  padding-top: 0.85vh;
+  color: black;
+}
+
+.directIcon {
+  position: relative;
+  font-size: 1rem;
+  flex: 1;
+  margin: auto;
+}
+
+.p {
+  font-weight: 800;
+  font-size: 17.6421px;
+  margin: 0 0 5px;
+}
+
+@media screen and (max-width: 600px) {
+  .LinkBox {
+    margin: 12px auto;
+    height: 60px;
+    padding: 10px;
+    width: 80vw;
+  }
+  .p {
+    font-weight: 800;
+    font-size: 0.9rem;
+    margin: 0 0 5px;
+  }
+  .LinkBoxPreview {
+    width: 65vw !important;
+  }
+
+  .pPreview {
+    font-size: 0.6rem !important;
+  }
+}
+
+@media screen and (max-width: 321px) {
+  .LinkBox {
+    margin: 12px auto;
+    height: 35px;
+    padding: 10px;
+    width: 75vw;
+  }
+}

@@ -1,12 +1,27 @@
 .homeScreenStyle {
   position: relative;
-  margin: 30vh auto;
+  margin: 20vh auto;
   text-align: center;
   z-index: 50;
 }
 
+.linkContainer {
+  display: grid;
+  width: 75%;
+  grid-template-columns: 1fr 1fr 1fr;
+  align-items: center;
+  margin: 0 auto;
+}
+
 .homeScreenStyle h3 {
+  font-size: 1.75rem;
   color: rgb(240, 238, 238);
+}
+
+.homeScreenStyle h4 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #51d7fd;
 }
 
 .buttonStyle {
@@ -22,4 +37,55 @@
 
 .errorStyleHide {
   display: none;
+}
+
+@media screen and (max-width: 1000px) {
+  .linkContainer {
+    width: 50%;
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .linkContainer {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .homeScreenStyle {
+    position: relative;
+    margin: 5vh auto;
+    text-align: center;
+    z-index: 50;
+  }
+
+  .homeScreenStyle h3 {
+    font-size: 1.25rem;
+    color: rgb(240, 238, 238);
+  }
+
+  .homeScreenStyle h4 {
+    width: 60%;
+    margin: 0 auto;
+    margin-bottom: 1vh;
+    font-size: 0.95rem;
+  }
+}
+
+@media screen and (max-height: 600px) {
+  .homeScreenStyle {
+    position: relative;
+    margin: 8vh auto;
+    text-align: center;
+    z-index: 50;
+  }
+}
+
+@media screen and (max-height: 321px) {
+  .homeScreenStyle {
+    position: relative;
+    margin: 1vh auto;
+    text-align: center;
+    z-index: 50;
+  }
 }

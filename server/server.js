@@ -28,7 +28,7 @@ app.use("/auth", authRoutes);
 app.use("/link", linkRoutes);
 app.use("/", fetchRoute);
 
-const CONNECTION_URL = process.env.MONGO_CONNECT;
+const CONNECTION_URL = process.env.MONGO_CONNECTION;
 const PORT = process.env.PORT;
 
 mongoose

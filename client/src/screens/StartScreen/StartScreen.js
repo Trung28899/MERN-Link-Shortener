@@ -1,64 +1,29 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
 import classes from "./StartScreen.module.css";
-import TextBox from "../../components/TextBox/TextBox";
-import Modal from "../../components/Modal/Modal";
-import BackDrop from "../../components/BackDrop/BackDrop";
+import LinkBox from "../../components/LinkBox/LinkBox";
 
-import { useDispatch } from "react-redux";
-import { authenticate } from "../../store/appActions";
-import * as api from "../../api/api";
+const StartScreen = () => {
+  const { homeScreenStyle, linkContainer } = classes;
+  const domainArray = [
+    { name: "linker.link", url: "https://linker.link" },
+    { name: "linker.live", url: "https://linker.live" },
+    { name: "linkweb.link", url: "https://linkweb.link" },
+    { name: "hosthub.live", url: "https://hosthub.live" },
+    { name: "vietweb.site", url: "https://vietweb.site" },
+    { name: "rutgon.live", url: "https://rutgon.live" },
+  ];
 
-const StartScreen = ({ history }) => {
-  const [password, setPassword] = useState("");
-  const [show, setShow] = useState(true);
-  const [invalid, setInvalid] = useState(false);
-  const [openModal, setOpenModal] = useState(false);
-  const { homeScreenStyle, buttonStyle, errorStyle, errorStyleHide } = classes;
-  const dispatch = useDispatch();
-
-  const handleLogin = async () => {
-    setOpenModal(true);
-    console.log(password);
-    const passwordValidated = await api.validateLogin(password);
-    console.log(passwordValidated);
-    if (passwordValidated) {
-      setInvalid(false);
-      dispatch(authenticate(password));
-      setTimeout(() => {
-        setOpenModal(false);
-        return history.push("/addlink");
-      }, 1000);
-    } else {
-      setInvalid(true);
-      setOpenModal(false);
-    }
-  };
+  const linkList = domainArray.map((value, index) => (
+    <LinkBox content={value.name} url={value.url} key={index} />
+  ));
 
   return (
     <div className={homeScreenStyle}>
-      <h3>App Rút Gọn Đường Link OTC</h3>
-      <TextBox
-        placeHolder={"Mật Khẩu"}
-        show={show}
-        setContent={setPassword}
-        setShow={setShow}
-        typePW={true}
-      />
-      <br />
-      <h5 className={invalid ? errorStyle : errorStyleHide}>
-        * Mật Khẩu Không Đúng
-      </h5>
-      <Button
-        color="primary"
-        variant="contained"
-        className={buttonStyle}
-        onClick={handleLogin}
-      >
-        Đăng Nhập
-      </Button>
-      <Modal show={openModal} />
-      <BackDrop show={openModal} />
+      <h3>
+        Welcome To TrungTrinh's <br /> Link Shortener!
+      </h3>
+      <h4>Choose the domain name to shorten you link</h4>
+      <div className={linkContainer}>{linkList}</div>
     </div>
   );
 };

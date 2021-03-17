@@ -18,12 +18,12 @@ code {
   width: 100vw;
   height: 100vh;
   object-fit: cover;
-  opacity: 0.1;
+  opacity: 0.3;
 }
 
 .appCover {
   position: absolute;
-  background-color: rgb(39, 39, 39);
+  background-color: #150d1c;
   height: 100vh;
   width: 100vw;
 }

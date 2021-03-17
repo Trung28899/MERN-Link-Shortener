@@ -1,8 +1,9 @@
-import { AUTHENTICATE, LOGOUT, BACK_UP_DATA, ADDLINK } from "./appConstants";
+import { CHOOSE_DOMAIN, LOGOUT, BACK_UP_DATA, ADDLINK } from "./appConstants";
 
 export const appReducer = (
   state = {
-    loggedIn: false,
+    domainURL: "",
+    domainName: "",
     username: "",
     dataBackedUp: false,
     accessLink: "",
@@ -10,14 +11,15 @@ export const appReducer = (
   action
 ) => {
   switch (action.type) {
-    case AUTHENTICATE:
-      console.log(state);
-      return { ...state, loggedIn: true, username: action.payload };
+    case CHOOSE_DOMAIN:
+      const { name, url } = action.payload;
+      console.log(action.payload);
+      return { ...state, domainURL: url, domainName: name, username: "" };
     case ADDLINK:
       console.log(state);
       return { ...state, accessLink: action.payload };
     case LOGOUT:
-      return { ...state, loggedIn: false, username: "" };
+      return { ...state, domainURL: "", domainName: "", username: "" };
     case BACK_UP_DATA:
       console.log(state);
       return { ...state, dataBackedUp: true };

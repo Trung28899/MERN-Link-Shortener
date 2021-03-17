@@ -1,7 +1,7 @@
-import { AUTHENTICATE, LOGOUT, BACK_UP_DATA, ADDLINK } from "./appConstants";
+import { CHOOSE_DOMAIN, LOGOUT, BACK_UP_DATA, ADDLINK } from "./appConstants";
 
-export const authenticate = (password) => async (dispatch) => {
-  return dispatch({ type: AUTHENTICATE, payload: password });
+export const chooseDomain = (name, url) => async (dispatch) => {
+  return dispatch({ type: CHOOSE_DOMAIN, payload: { name: name, url: url } });
 };
 
 export const addAccessLink = (accessLink) => async (dispatch) => {
