@@ -1,9 +1,11 @@
-import React, { useState } from "react";
+import React, { useEffect } from "react";
 import classes from "./StartScreen.module.css";
 import LinkBox from "../../components/LinkBox/LinkBox";
+import { useSelector } from "react-redux";
 
-const StartScreen = () => {
+const StartScreen = ({ history }) => {
   const { homeScreenStyle, linkContainer } = classes;
+  const domainChosen = useSelector((state) => state.appReducer.domainName);
   const domainArray = [
     { name: "linker.link", url: "https://linker.link" },
     { name: "linker.live", url: "https://linker.live" },
@@ -16,6 +18,10 @@ const StartScreen = () => {
   const linkList = domainArray.map((value, index) => (
     <LinkBox content={value.name} url={value.url} key={index} />
   ));
+
+  useEffect(() => {
+    domainChosen && history.push("/addlink");
+  }, [domainChosen]);
 
   return (
     <div className={homeScreenStyle}>

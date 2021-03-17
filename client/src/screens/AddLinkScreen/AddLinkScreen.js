@@ -20,7 +20,7 @@ const AddLinkScreen = ({ history }) => {
   const [link, setLink] = useState("");
   const [invalidMsg, setInvalidMsg] = useState("");
   const [openModal, setOpenModal] = useState(false);
-  const loggedIn = useSelector((state) => state.appReducer.loggedIn);
+  const domainChosen = useSelector((state) => state.appReducer.domainName);
   const dispatch = useDispatch();
 
   const {
@@ -56,7 +56,7 @@ const AddLinkScreen = ({ history }) => {
     }
   };
 
-  if (loggedIn) {
+  if (domainChosen) {
     return (
       <div className={homeScreenStyle}>
         <h3>Tạo Đường Link Rút Gọn Của Bạn</h3>

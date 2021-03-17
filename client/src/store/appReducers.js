@@ -13,7 +13,6 @@ export const appReducer = (
   switch (action.type) {
     case CHOOSE_DOMAIN:
       const { name, url } = action.payload;
-      console.log(action.payload);
       return { ...state, domainURL: url, domainName: name, username: "" };
     case ADDLINK:
       console.log(state);
