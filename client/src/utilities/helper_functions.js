@@ -1,5 +1,3 @@
-import firebase from "./firebase";
-
 export const validateUser = (password) => {
   switch (password) {
     case "trungtrinh":

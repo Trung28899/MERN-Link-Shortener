@@ -1,33 +1,39 @@
-import React from "react";
+import React, { useState } from "react";
 import classes from "./TextBox.module.css";
-import Visibility from "@material-ui/icons/Visibility";
-import VisibilityOff from "@material-ui/icons/VisibilityOff";
-import IconButton from "@material-ui/core/IconButton";
 
 const TextBox = (props) => {
-  const { inputStyle, textBoxContainer } = classes;
-  const { show, setShow, setContent, placeHolder, typePW, value } = props;
+  const { inputStyle, textBoxContainer, iconContainer } = classes;
+  const { setContent, placeHolder, value, accessName } = props;
+  const [messageStyles, setMessageStyles] = useState([
+    classes.message,
+    classes.errorMessage,
+  ]);
+  const [roofStyles, setRoofStyles] = useState([
+    classes.roof,
+    classes.errorMessage,
+  ]);
+
   const onChangeHandler = (value) => {
     setContent(value);
   };
   return (
-    <div className={textBoxContainer}>
-      <input
-        className={inputStyle}
-        type={!show ? "text" : "password"}
-        placeholder={placeHolder}
-        onChange={(e) => onChangeHandler(e.target.value)}
-        value={value}
-      ></input>
-      {typePW && (
-        <IconButton
-          aria-label="toggle password visibility"
-          onClick={() => setShow(!show)}
-          edge="end"
-        >
-          {show ? <Visibility /> : <VisibilityOff />}
-        </IconButton>
-      )}
+    <div>
+      <div className={textBoxContainer}>
+        <input
+          className={inputStyle}
+          type="text"
+          placeholder={placeHolder}
+          onChange={(e) => onChangeHandler(e.target.value)}
+          value={value}
+        ></input>
+        <div className={iconContainer}>
+          {accessName && <i class="fas fa-exclamation-circle"></i>}
+          <div className={roofStyles.join(" ")}></div>
+        </div>
+      </div>
+      <div className={messageStyles.join(" ")}>
+        <h3>Just a message here</h3>
+      </div>
     </div>
   );
 };

@@ -1,5 +1,4 @@
-import bgImg from "./assets/background.jpg";
-import bgImg2 from "./assets/bg.jpg";
+import bgImg from "./assets/bg.jpg";
 import "./index.css";
 import { Route, Switch } from "react-router-dom";
 import StartScreen from "./screens/StartScreen/StartScreen";
@@ -8,14 +7,9 @@ import ConfirmScreen from "./screens/ConfirmScreen/ConfirmScreen";
 import RedirectScreen from "./screens/RedirectScreen/RedirectScreen";
 import { useLocation } from "react-router-dom";
 
-function App(props) {
+function App() {
   const route = useLocation().pathname;
-  let background;
-  if (route === "/addlink") {
-    background = bgImg;
-  } else {
-    background = bgImg2;
-  }
+  let background = bgImg;
   return (
     <div className="appCover">
       <img className="imageResponsive" src={background} />
