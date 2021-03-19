@@ -16,27 +16,23 @@ export const validateUser = (password) => {
 export const validateAccessLink = (accessLink) => {
   let linkExists = false;
   if (accessLink === null || accessLink === "") {
-    return "Vui Lòng Điền Tên Truy Cập";
-  } else if (accessLink.includes(".")) {
-    return "Tên Truy Cập Không Được Có Dấu .";
+    return "Please enter Access Name";
   } else if (accessLink.includes(",")) {
-    return "Tên Truy Cập Không Được Có Dấu ,";
-  } else if (accessLink.includes("@")) {
-    return "Tên Truy Cập Không Được Có Dấu @";
+    return ", symbol not accepted";
   } else if (accessLink.includes("(")) {
-    return "Tên Truy Cập Không Được Có Dấu (";
+    return "( symbol not accepted";
   } else if (accessLink.includes(")")) {
-    return "Tên Truy Cập Không Được Có Dấu )";
+    return ") symbol not accepted";
   } else if (accessLink.includes("^")) {
-    return "Tên Truy Cập Không Được Có Dấu ^";
-  } else if (accessLink.includes("#")) {
-    return "Tên Truy Cập Không Được Có Dấu #";
+    return "^ symbol not accepted";
+  } else if (accessLink.includes("/")) {
+    return "/ symbol not accepted";
   } else if (accessLink.includes("$")) {
-    return "Tên Truy Cập Không Được Có Dấu $";
+    return "$ symbol not accepted";
   } else if (accessLink.includes("[")) {
-    return "Tên Truy Cập Không Được Có Dấu [";
+    return "[ symbol not accepted";
   } else if (accessLink.includes("]")) {
-    return "Tên Truy Cập Không Được Có Dấu ]";
+    return "] symbol not accepted";
   } else if (accessLink.includes(" ")) {
     return "Tên Truy Cập Không Được Có Khoảng Trống";
   }
