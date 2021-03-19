@@ -13,37 +13,50 @@ export const validateUser = (password) => {
   }
 };
 
-export const validateAccessLink = (accessLink) => {
-  let linkExists = false;
-  if (accessLink === null || accessLink === "") {
+export const validateAccessName = (accessName) => {
+  if (accessName === null || accessName === "") {
     return "Please enter Access Name";
-  } else if (accessLink.includes(",")) {
+  } else if (accessName.includes(",")) {
     return ", symbol not accepted";
-  } else if (accessLink.includes("(")) {
+  } else if (accessName.includes("(")) {
     return "( symbol not accepted";
-  } else if (accessLink.includes(")")) {
+  } else if (accessName.includes(")")) {
     return ") symbol not accepted";
-  } else if (accessLink.includes("^")) {
+  } else if (accessName.includes("^")) {
     return "^ symbol not accepted";
-  } else if (accessLink.includes("/")) {
+  } else if (accessName.includes("/")) {
     return "/ symbol not accepted";
-  } else if (accessLink.includes("$")) {
+  } else if (accessName.includes("$")) {
     return "$ symbol not accepted";
-  } else if (accessLink.includes("[")) {
+  } else if (accessName.includes("[")) {
     return "[ symbol not accepted";
-  } else if (accessLink.includes("]")) {
+  } else if (accessName.includes("]")) {
     return "] symbol not accepted";
-  } else if (accessLink.includes(" ")) {
-    return "Tên Truy Cập Không Được Có Khoảng Trống";
+  } else if (accessName.includes("@")) {
+    return "@ symbol not accepted";
+  } else if (accessName.includes("*")) {
+    return "* symbol not accepted";
+  } else if (accessName.includes("!")) {
+    return "! symbol not accepted";
+  } else if (accessName.includes("?")) {
+    return "? symbol not accepted";
+  } else if (accessName.includes(">")) {
+    return "> symbol not accepted";
+  } else if (accessName.includes("<")) {
+    return "< symbol not accepted";
+  } else if (accessName.includes(";")) {
+    return "; symbol not accepted";
+  } else if (accessName.includes("|")) {
+    return "| symbol not accepted";
   }
-  return null;
+  return "";
 };
 
-export const validateLink = (accessLink) => {
-  if (accessLink === null || accessLink === "") {
-    return "Vui Lòng Nhập Đường Link";
-  } else if (accessLink.includes(" ")) {
-    return "Đường Link Không Được Có Khoảng Trống";
+export const validateLink = (link) => {
+  if (link === null || link === "") {
+    return "Please enter your Link";
+  } else if (!link.includes("http")) {
+    return "Invalid link. Please copy and paste the full link";
   }
-  return null;
+  return "";
 };

@@ -2,12 +2,25 @@ import React, { useState, useEffect } from "react";
 import Button from "@material-ui/core/Button";
 import classes from "./AddLinkScreen.module.css";
 import TextBox from "../../components/TextBox/TextBox";
+import {
+  validateAccessName,
+  validateLink,
+} from "../../utilities/helper_functions";
 
 const AddLinkScreen = () => {
-  const [accessLink, setAccessLink] = useState("");
+  const [accessName, setAccessName] = useState("");
   const [link, setLink] = useState("");
   const [invalidMsg] = useState("Hello");
-  const [error, setError] = useState({ link: "", accessLink: "" });
+  const [error, setError] = useState({ link: "", accessName: "" });
+
+  const addLinkHandler = async () => {
+    const linkError = validateLink(link);
+    const accessNameError = validateAccessName(accessName);
+    if (accessNameError || linkError) {
+      return setError({ link: linkError, accessName: accessNameError });
+    }
+    console.log("Success");
+  };
 
   return (
     <div className={classes.homeScreenStyle}>
@@ -22,11 +35,11 @@ const AddLinkScreen = () => {
       <div className={classes.separaterStyle}></div>
       <TextBox
         placeHolder={"Enter Access Name"}
-        setContent={setAccessLink}
-        value={accessLink}
-        error={error.accessLink}
+        setContent={setAccessName}
+        value={accessName}
+        error={error.accessName}
         accessName={true}
-        resetError={() => setError({ ...error, accessLink: "" })}
+        resetError={() => setError({ ...error, accessName: "" })}
       />
       <br />
       <h5 className={classes.errorStyleHide}>* {invalidMsg}</h5>
@@ -34,6 +47,7 @@ const AddLinkScreen = () => {
         color="primary"
         variant="contained"
         className={classes.buttonStyle}
+        onClick={addLinkHandler}
       >
         Shortern Your Link
       </Button>
