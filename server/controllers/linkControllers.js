@@ -1,18 +1,26 @@
 import Link from "../models/linkModel.js";
 
 const createLink = async (req, res, next) => {
-  const { accessName, redirectLink } = req.body;
+  const { accessName, redirectLink, domainName, domainURL } = req.body;
   try {
-    const linkRecord = await Link.find({ accessName: accessName });
+    const linkRecord = await Link.find({
+      accessName: accessName,
+      domainName: domainName,
+    });
     if (linkRecord.length === 0) {
       const newLink = new Link({
         accessName: accessName,
         redirectLink: redirectLink,
+        domainName: domainName,
+        domainURL: domainURL,
       });
       newLink.save();
       res.json({ linkCreated: true, error: false });
     } else {
-      res.json({ linkCreated: false, error: false });
+      res.json({
+        linkCreated: false,
+        error: `${domainName}/${accessName} is taken. Please choose another Access Name`,
+      });
     }
   } catch (err) {
     res.status(409).json({ linkCreated: false, error: err.message });
