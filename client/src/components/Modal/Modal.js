@@ -17,7 +17,7 @@ const Modal = (props) => {
           fontSize: "1.5rem",
         }}
       >
-        Đang Tải...
+        Loading...
       </h5>
     </div>
   );

@@ -15,7 +15,7 @@ const ConfirmScreen = ({ history }) => {
     window.open(`https://rutgon.live/${accessLink}`);
   };
 
-  if (loggedIn) {
+  if (true) {
     return (
       <div className={confirmScreenStyle}>
         <h3>LINK RÚT GỌN KHỞI TẠO THÀNH CÔNG</h3>

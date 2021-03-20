@@ -15,10 +15,17 @@ export const validateLogin = async (password) => {
   }
 };
 
-export const createLink = async (accessName, redirectLink) => {
+export const createLink = async (
+  accessName,
+  redirectLink,
+  domainName,
+  domainURL
+) => {
   const res = await axios.post(urlLink.create, {
     accessName: accessName,
     redirectLink: redirectLink,
+    domainName: domainName,
+    domainURL: domainURL,
   });
   return res.data;
 };
