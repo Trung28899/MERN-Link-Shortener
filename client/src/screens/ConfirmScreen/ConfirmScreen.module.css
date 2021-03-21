@@ -24,4 +24,43 @@
 
 .buttonStyle {
   background-color: black !important;
+  border: 1px solid rgb(99, 99, 99) !important;
+  font-weight: 800 !important;
+  margin-right: 1vw;
+}
+
+.copyButton {
+  background-color: rgb(230, 230, 230) !important;
+  color: black !important;
+  font-weight: 800 !important;
+  border: 1px solid rgb(99, 99, 99) !important;
+}
+
+.copyButton i {
+  margin-right: 0.5vw !important;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+}
+
+@media screen and (max-width: 600px) {
+  .confirmScreenStyle p:nth-child(2) {
+    position: relative;
+    width: 80%;
+    left: 10%;
+  }
+
+  .buttonContainer {
+    justify-content: space-evenly;
+  }
+
+  .buttonStyle {
+    margin-right: 0vw;
+  }
+
+  .copyButton i {
+    margin-right: 0.75vw !important;
+  }
 }

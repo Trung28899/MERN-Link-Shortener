@@ -60,3 +60,21 @@ export const validateLink = (link) => {
   }
   return "";
 };
+
+export function copyToClipboard(copyValue) {
+  let stringCopied = document.createElement("textarea");
+
+  stringCopied.value = copyValue;
+  stringCopied.setAttribute("readonly", "");
+  stringCopied.style = {
+    position: "absolute",
+    left: "-9999px",
+    display: "none",
+  };
+
+  document.body.appendChild(stringCopied);
+  stringCopied.select();
+  document.execCommand("copy");
+
+  document.body.removeChild(stringCopied);
+}

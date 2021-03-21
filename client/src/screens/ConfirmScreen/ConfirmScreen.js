@@ -1,34 +1,63 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import classes from "./ConfirmScreen.module.css";
-import ArrowBackIosIcon from "@material-ui/icons/ArrowBackIos";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { logout } from "../../store/appActions";
+import { useHistory } from "react-router-dom";
+import { copyToClipboard } from "../../utilities/helper_functions";
 
-const ConfirmScreen = ({ history }) => {
+const ConfirmScreen = () => {
   const { confirmScreenStyle, buttonStyle } = classes;
-  const accessLink = useSelector((state) => state.appReducer.accessLink);
-  const loggedIn = useSelector((state) => state.appReducer.loggedIn);
+  const { domainName } = useSelector((state) => state.appReducer);
+  const [copied, setCopied] = useState(false);
+  const dispatch = useDispatch();
+  const history = useHistory();
+  const fullUrl = `https://${domainName}`;
+
   const onClickHandler = () => {
-    history.push("/addlink");
-  };
-  const onClickLink = () => {
-    window.open(`https://rutgon.live/${accessLink}`);
+    dispatch(logout());
+    history.push("/");
   };
 
-  if (true) {
+  const copyHandler = () => {
+    copyToClipboard(fullUrl);
+    setCopied(true);
+  };
+
+  const onClickLink = () => {
+    window.open(fullUrl);
+  };
+
+  if (domainName) {
     return (
       <div className={confirmScreenStyle}>
-        <h3>LINK RÚT GỌN KHỞI TẠO THÀNH CÔNG</h3>
-        <p>Nhấp vào link dưới đây để truy cập đường link rút gọn của bạn</p>
-        <p onClick={onClickLink}>rutgon.live/{accessLink}</p>
-        <Button
-          className={buttonStyle}
-          variant="contained"
-          color="primary"
-          onClick={onClickHandler}
-        >
-          <ArrowBackIosIcon /> Quay Lại
-        </Button>
+        <h3>YOUR LINK IS SUCCESSFULLY SHORTENED!!</h3>
+        <p>The link down below is your shortened link. </p>
+        <p onClick={onClickLink}>{domainName}</p>
+        <div className={classes.buttonContainer}>
+          <Button
+            className={buttonStyle}
+            variant="contained"
+            color="primary"
+            onClick={onClickHandler}
+          >
+            <i className="fas fa-chevron-left"></i>&nbsp; Return
+          </Button>
+
+          <Button
+            className={classes.copyButton}
+            variant="contained"
+            color="primary"
+            onClick={copyHandler}
+          >
+            {copied ? (
+              <i className="fas fa-check-circle"></i>
+            ) : (
+              <i className="fas fa-clone"></i>
+            )}
+            {copied ? "Link Copied" : "Copy Link"}
+          </Button>
+        </div>
       </div>
     );
   } else {
