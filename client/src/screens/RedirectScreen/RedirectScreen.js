@@ -9,7 +9,7 @@ const RedirectScreen = () => {
   api.fetchLink(id).then((res) => {
     const { redirectLink, error } = res.data;
     if (error) {
-      alert("Đường Link Không Tồn Tại");
+      alert("Link Doesn't Exist");
     } else {
       window.location.href = redirectLink;
     }
