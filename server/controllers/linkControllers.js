@@ -30,8 +30,6 @@ const createLink = async (req, res, next) => {
 const fetchLink = async (req, res, next) => {
   const { accessName } = req.params;
   const { domainURL } = req.body;
-  console.log(accessName);
-  console.log(domainURL);
 
   try {
     const linkRecord = await Link.find({
