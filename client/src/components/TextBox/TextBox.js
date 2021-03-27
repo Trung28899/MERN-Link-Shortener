@@ -12,7 +12,7 @@ const TextBox = (props) => {
 
   const onChangeHandler = (value) => {
     props.resetError();
-    setContent(value.toLowerCase().replace(/\s/g, ""));
+    setContent(value.replace(/\s/g, ""));
   };
 
   const infoClicked = () => {

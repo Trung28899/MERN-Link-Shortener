@@ -29,15 +29,32 @@ const createLink = async (req, res, next) => {
 
 const fetchLink = async (req, res, next) => {
   const { accessName } = req.params;
+  const { domainURL } = req.body;
+  console.log(accessName);
+  console.log(domainURL);
+
   try {
-    const linkRecord = await Link.find({ accessName: accessName });
+    const linkRecord = await Link.find({
+      accessName: accessName,
+      domainURL: domainURL,
+    });
     if (linkRecord.length > 0) {
-      res.json({ redirectLink: linkRecord[0].redirectLink, error: false });
+      res.json({
+        redirectLink: linkRecord[0].redirectLink,
+        error: false,
+        errorMessage: "",
+      });
     } else {
-      res.json({ redirectLink: null, error: true });
+      res.json({
+        redirectLink: null,
+        error: true,
+        errorMessage: "Link Doesn't Exist",
+      });
     }
   } catch (err) {
-    res.status(409).json({ redirectLink: null, error: err.message });
+    res
+      .status(409)
+      .json({ redirectLink: null, error: true, errorMessage: err.message });
   }
 };
 

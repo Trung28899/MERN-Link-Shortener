@@ -1,5 +1,6 @@
 ## Tasks to be done:
 
-- Loader UI for Fetch Page
+- Modify FE API, host BE to amazon
+  > Get it work in full Production temporary
 - Fetch Page sending Request and Redirecting
 - PWA functionalities

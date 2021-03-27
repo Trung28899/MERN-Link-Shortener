@@ -6,15 +6,6 @@ const urlLink = {
   auth: baseURL + "/auth",
 };
 
-export const validateLogin = async (password) => {
-  try {
-    const res = await axios.post(urlLink.auth, { password: password });
-    return res.data;
-  } catch (error) {
-    return { error: "there is error" };
-  }
-};
-
 export const createLink = async (
   accessName,
   redirectLink,
@@ -30,7 +21,17 @@ export const createLink = async (
   return res.data;
 };
 
-export const fetchLink = async (accessName) => {
-  const res = await axios.get(baseURL + "/" + accessName);
-  return res;
+export const fetchLink = async (accessName, domainURL) => {
+  try {
+    const res = await axios.post(baseURL + "/" + accessName, {
+      domainURL: domainURL,
+    });
+    return res.data;
+  } catch (error) {
+    return {
+      redirectLink: "",
+      error: true,
+      errorMessage: `Error making a request to redirect. Please try again ! \nError: ${error.message}`,
+    };
+  }
 };
