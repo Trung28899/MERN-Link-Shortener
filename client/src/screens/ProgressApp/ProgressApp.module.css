@@ -1,0 +1,63 @@
+.container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.titleContainer {
+  margin-top: 10vh;
+}
+
+.title {
+  color: white;
+  text-align: center;
+  font-size: 1.5rem;
+}
+
+.myProgress {
+  position: relative;
+  display: flex;
+  margin-top: 10vh;
+  margin-left: 20vw;
+  width: 60vw;
+  background-color: #f7f7f7;
+  border-radius: 32px;
+  overflow: hidden;
+}
+
+.myBar {
+  position: relative;
+  height: 60px;
+  background-image: url("https://media.giphy.com/media/MXQnyEQwBJ6eTj90L5/giphy.gif");
+  text-align: center;
+  align-items: center;
+}
+
+.progressText {
+  position: relative;
+  font-weight: 800;
+  font-size: 1.25rem;
+  color: white;
+}
+
+.numberContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 5vh;
+}
+
+.numberContainer h3 {
+  color: #f7f7f7;
+  font-weight: 800;
+}
+
+.button {
+  margin: auto 2.5vw;
+  cursor: pointer;
+  color: white;
+  border: 1px solid white;
+  padding: 8px 12px;
+  border-radius: 10px;
+}

@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseURL = process.env.REACT_APP_PROD_URL;
+// const baseURL = process.env.REACT_APP_PROD_URL;
+const baseURL = process.env.REACT_APP_DEV_URL;
+
 const urlLink = {
   create: baseURL + "/link/create/",
   auth: baseURL + "/auth",
