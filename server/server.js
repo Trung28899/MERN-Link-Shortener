@@ -4,6 +4,7 @@ import cors from "cors";
 import authRoutes from "./routes/authRoutes.js";
 import linkRoutes from "./routes/linkRoutes.js";
 import fetchRoute from "./routes/fetchRoute.js";
+import progressRoute from "./routes/progressRoutes.js";
 import mongoose from "mongoose";
 /*
   config to get access to environment variables
@@ -26,6 +27,7 @@ app.use(bodyParser.json());
 
 app.use("/auth", authRoutes);
 app.use("/link", linkRoutes);
+app.use("/progress", progressRoute);
 app.use("/", fetchRoute);
 
 const CONNECTION_URL = process.env.MONGO_CONNECTION;

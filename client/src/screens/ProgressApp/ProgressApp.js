@@ -1,18 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import classes from "./ProgressApp.module.css";
+import * as api from "../../api/api";
 
 const ProgressApp = () => {
+  let fetched = false;
   const [completed, setCompleted] = useState(0);
   const deadLine = 1624420800000;
   let remainingTime = (deadLine - Date.now()) / (1000 * 60 * 60 * 24);
   const percentage = Math.round(completed / 0.3);
 
-  const handleAdd = () => {
-    setCompleted(completed + 0.5);
+  useEffect(async () => {
+    if (!fetched) {
+      const progress = await api.fetchProgress();
+      setCompleted(progress.completed);
+      fetched = true;
+    }
+  }, [fetched]);
+
+  const handleAdd = async () => {
+    const res = await api.incrementProgress();
+    res.success && setCompleted(completed + 0.5);
   };
 
-  const handleMinus = () => {
-    setCompleted(completed - 0.5);
+  const handleMinus = async () => {
+    const res = await api.decrementProgress();
+    res.success && setCompleted(completed - 0.5);
   };
 
   if (remainingTime < 0) {

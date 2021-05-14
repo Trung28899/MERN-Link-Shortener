@@ -1,11 +1,14 @@
 import axios from "axios";
 
-// const baseURL = process.env.REACT_APP_PROD_URL;
-const baseURL = process.env.REACT_APP_DEV_URL;
+const baseURL = process.env.REACT_APP_PROD_URL;
+// const baseURL = process.env.REACT_APP_DEV_URL;
 
 const urlLink = {
   create: baseURL + "/link/create/",
   auth: baseURL + "/auth",
+  fetchProgress: baseURL + "/progress",
+  progressInc: baseURL + "/progress/increment",
+  progressDec: baseURL + "/progress/decrement",
 };
 
 export const createLink = async (
@@ -36,4 +39,19 @@ export const fetchLink = async (accessName, domainURL) => {
       errorMessage: `Error making a request to redirect. Please try again ! \nError: ${error.message}`,
     };
   }
+};
+
+export const fetchProgress = async () => {
+  const res = await axios.get(urlLink.fetchProgress);
+  return res.data;
+};
+
+export const incrementProgress = async () => {
+  const res = await axios.get(urlLink.progressInc);
+  return res.data;
+};
+
+export const decrementProgress = async () => {
+  const res = await axios.get(urlLink.progressDec);
+  return res.data;
 };
